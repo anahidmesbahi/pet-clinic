@@ -33,15 +33,29 @@ class PetManagerTest {
 	@Mock
 	private Logger log;
 
+
 	@Test
-	private void testFindOwner() {
+	private void testFindOwnerState() {
 		// in this test we have used Spy
 		// that is a State verification method
 		PetManager pm = new PetManager(pets, owners, log);
 
 		Owner o1 = new Owner();
+		o1.setId(1);
 		OwnerRepository ownersSpy = spy(owners);
-		when(ownersSpy.findById(1)).thenReturn(o1);
+		ownersSpy.save(o1);
+
+		assertEquals(pm.findOwner(1), o1);
+	}
+	// Q3 here
+	@Test
+	private void testFindOwnerBehavior(@Mock OwnerRepository ownerRepository) {
+		// in this test we have used Mock
+		// that is a Behavior verification method
+		PetManager pm = new PetManager(pets, owners, log);
+
+		Owner o1 = new Owner();
+		doReturn(o1).when(ownerRepository).findById(1);
 
 		assertEquals(pm.findOwner(1), o1);
 	}
