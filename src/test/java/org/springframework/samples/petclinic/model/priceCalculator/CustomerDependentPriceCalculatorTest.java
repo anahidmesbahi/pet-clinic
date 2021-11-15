@@ -66,9 +66,13 @@ public class CustomerDependentPriceCalculatorTest {
 		Pet P3 = new Pet();
 
 		PetType T1 = new PetType();
+		T1 = mock(T1.getClass());
+
+		when(T1.getRare()).thenReturn(true);
 
 		P1.setType(T1);
 		P2.setType(T1);
+		P3.setType(T1);
 
 		P1.setBirthDate(new Date());
 		P2.setBirthDate(new Date(974289794));

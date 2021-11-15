@@ -47,7 +47,7 @@ public class SimplePriceCalculatorTest {
 		double baseCharge = 15.5;
 		double basePricePerPet  = 7.35;
 
-		UserType userType = UserType.GOLD;
+		UserType userType = UserType.NEW;
 
 		SimplePriceCalculator S1 = new SimplePriceCalculator();
 		double result = S1.calcPrice(pets, baseCharge, basePricePerPet, userType);
